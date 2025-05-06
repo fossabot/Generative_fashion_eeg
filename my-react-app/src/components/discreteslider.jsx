@@ -6,10 +6,11 @@ function valuetext(value) {
   return `${value}°C`;
 }
 
+
 export default function DiscreteSlider() {
   return (
     <div style={{
-      width: '100vh',
+      width: '80vh',
       justifyContent: 'center',
       alignItems: 'center',
     }}>
@@ -21,10 +22,10 @@ export default function DiscreteSlider() {
         shiftStep={30}
         step={10}
         marks
-        min={10}
-        max={110}
+        min={0}
+        max={100}
       />
-      <Slider defaultValue={30} step={10} marks min={10} max={110} disabled />
+      <Slider defaultValue={30} step={10} marks min={0} max={100} disabled />
     </div>
   );
 }
