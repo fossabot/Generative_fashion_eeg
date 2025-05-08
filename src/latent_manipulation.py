@@ -6,18 +6,22 @@
 
 
 import sys
-#add real stylegan3 path
-sys.path.insert(0, "/content/stylegan3")
-import pickle
 import os
+import pickle
 import numpy as np
 import PIL.Image
 from IPython.display import Image
 import matplotlib.pyplot as plt
 import IPython.display
 import torch
+stylegan3_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'stylegan3'))
+if stylegan3_path not in sys.path:
+    sys.path.insert(0, stylegan3_path)
+
 import dnnlib
 import legacy
+
+
 
 def seed2vec(G, seed):
   return np.random.RandomState(seed).randn(1, G.z_dim)
@@ -28,7 +32,7 @@ def display_image(image):
   plt.show()
 
 def generate_image(G, z, truncation_psi):
-    # Render images for dlatents initialized from random seeds.
+    # Render images for dlatents from random seeds.
     Gs_kwargs = {
         'output_transform': dict(func=tflib.convert_images_to_uint8,
         nchw_to_nhwc=True),
@@ -65,12 +69,8 @@ def generate_image(device, G, z, truncation_psi=1.0,
     .clamp(0, 255).to(torch.uint8)
   return PIL.Image.fromarray(img[0].cpu().numpy(), 'RGB')
 
-"""Next, we load the NVIDIA FFHQ (faces) GAN.  We could use any StyleGAN pretrained GAN network here."""
-
-# HIDE CODE
-
-MODEL_PATH ="/Users/fionalau/Desktop/Masterthesis_Code/model/network-snapshot-005000.pkl"
-
+# Load model 
+MODEL_PATH = '/home/l/lauf/thesis/Generative_fashion_eeg/model/network-snapshot-005000.pkl'
 print(f'Loading networks from" {MODEL_PATH}"...' )
 device = torch.device('cuda')
 # The file object 'f' should be passed to load_network_pkl
@@ -96,24 +96,19 @@ for i in range(SEED_FROM, SEED_TO):
   img = generate_image(device, G, z)
   display_image(img)
 
-"""## Fine-tune an Image
-
-If you find a seed you like, you can fine-tune it by directly adjusting the latent vector.  First, choose the seed to fine-tune.
-"""
+#Choose Seed
 
 START_SEED = 3070
 
 current = seed2vec(G, START_SEED)
 
-"""Next, generate and display the current vector. You will return to this point for each iteration of the finetuning."""
-
+# Generate initial image
 img = generate_image(device, G, current)
 
 SCALE = 0.5
 display_image(img)
 
-"""Choose an explore size; this is the number of different potential images chosen by moving in 10 different directions.  Run this code once and then again anytime you wish to change the ten directions you are exploring.  You might change the ten directions if you are no longer seeing improvements."""
-
+# Choose an explore size number
 EXPLORE_SIZE = 25
 
 explore = []
@@ -122,7 +117,6 @@ for i in range(EXPLORE_SIZE):
 
 """Each image displayed from running this code shows a potential direction that we can move in the latent vector.  Choose one image that you like and change MOVE_DIRECTION to indicate this decision.  Once you rerun the code, the code will give you a new set of potential directions.  Continue this process until you have a latent vector that you like."""
 
-# HIDE OUTPUT 1
 # Choose the direction to move.  Choose -1 for the initial iteration.
 MOVE_DIRECTION = -1
 SCALE = 0.5
@@ -136,7 +130,7 @@ for i, mv in enumerate(explore):
   img = generate_image(device, G, z)
   display_image(img)
 
-# HIDE OUTPUT 1
+
 # Choose the direction to move.  Choose -1 for the initial iteration.
 MOVE_DIRECTION = -1
 SCALE = 0.5
