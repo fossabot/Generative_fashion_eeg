@@ -9,6 +9,13 @@ import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
 
 
 function Home() {
+  const [ currentTime, setTime] = useState(0);
+
+  useEffect(() => {
+    fetch('/time').then(res => res.json().then(data => {
+    setTime(data.time);
+    }))
+  }, []);
   
   return (
     <div style={{
@@ -30,6 +37,7 @@ function Home() {
     }}>
       <h1>Generative Fashion</h1> 
       </div>
+      <p>The current time is {currentTime} </p>
       <Image></Image>
     </div>
 
@@ -37,7 +45,8 @@ function Home() {
 }
 
 function App() {
-
+  
+  
   return (
     <BrowserRouter>
       <Routes>

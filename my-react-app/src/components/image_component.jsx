@@ -3,30 +3,7 @@ import DiscreteSlider from './discreteslider';
 import { Button } from '@mui/material';
 
 export default function Image() {
-    const [sliderValues, setSliderValues] = useState([0, 0, 0, 0]);
-
-    const handleSliderChange = (index) => (newValue) => {
-        const updatedValues = [...sliderValues];
-        updatedValues[index] = newValue;
-        setSliderValues(updatedValues);
-    };
-
-    const sendToBackend = async () => {
-        try {
-            const response = await fetch('http://localhost:5000/receive', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ value: sliderValues }),
-                mode: 'cors',
-            });
-            const data = await response.json();
-            console.log('Backend response:', data);
-        } catch (error) {
-            console.error('Error sending data:', error);
-        }
-        console.log('Sending data to backend:', sliderValues);
-    };
-
+    
     return (
         <div style={{
             height: '70vh',
@@ -51,7 +28,7 @@ export default function Image() {
                         alt="Centered"
                         style={{ maxWidth: '60%', height: 'auto', padding: '15px' }}
                     />
-                    <DiscreteSlider onChange={handleSliderChange(0)} /> {/* Slider 1 */}
+                    <DiscreteSlider /> 
                 </div>
                 <div style={{
                     display: 'flex',
@@ -64,20 +41,20 @@ export default function Image() {
                         alt="Centered"
                         style={{ maxWidth: '60%', height: 'auto', padding: '15px' }}
                     />
-                    <DiscreteSlider onChange={handleSliderChange(1)} />
+                    <DiscreteSlider/>
                 </div>
                 <div style={{
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'center',
-                    alignItems: 'center',git
+                    alignItems: 'center',
                 }}>
                     <img
                         src="images/img_white_6.3124.png"
                         alt="Centered"
                         style={{ maxWidth: '60%', height: 'auto', padding: '15px' }}
                     />
-                    <DiscreteSlider onChange={handleSliderChange(2)} />
+                    <DiscreteSlider />
                 </div>
                 <div style={{
                     display: 'flex',
@@ -90,10 +67,10 @@ export default function Image() {
                         alt="Centered"
                         style={{ maxWidth: '60%', height: 'auto', padding: '15px' }}
                     />
-                    <DiscreteSlider onChange={handleSliderChange(3)} />
+                    <DiscreteSlider />
                 </div>
             </div>
-            <Button variant="contained" onClick={sendToBackend} style={{ marginTop: '20px' }}>
+            <Button variant="contained" style={{ marginTop: '20px' }}>
                 Confirm
             </Button>
         </div>
