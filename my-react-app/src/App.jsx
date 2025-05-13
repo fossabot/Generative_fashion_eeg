@@ -9,30 +9,28 @@ import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
 
 
 function Home() {
-  const [message, setMessage] = useState('Loading...')
-
-  useEffect(() => {
-    fetch('/api/hello') //  proxy to ngrok
-      .then(res => res.json())
-      .then(data => setMessage(data.message))
-      .catch(err => setMessage('Error: ' + err.message))
-  }, [])
-
+  
   return (
     <div style={{
+      paddingTop:'4rem',
       display: 'flex', 
       flexDirection: 'column', //!!!!
       alignItems: 'center',
-      justifyContent: 'center',
+      padding: '1rem',
+      height: '100vh', 
       fontFamily: 'Avenir',
       fontWeight: 'bold',
-      padding: '2rem',
-      height: '100vh', 
+      paddingRight: '4rem',
+      paddingLeft: '4rem',
     }}>
-      <h1>Generative Fashion Using EEG Data</h1>
+      <div style={{display: 'flex', flexDirection: 'column',alignItems: 'center',justifyContent: 'center',
+      
+      paddingBottom: '2rem',
+      height: '20vh', 
+    }}>
+      <h1>Generative Fashion</h1> 
+      </div>
       <Image></Image>
-      <DiscreteSlider></DiscreteSlider>
-      <Button variant="contained">Confirm</Button>
     </div>
 
   )
