@@ -8,8 +8,8 @@
 0. source ../venv/bin/activate
 1. cd to flask-server folder
 
-2. export FLASK_APP=server.py
-   export FLASK_ENV=development  
+2. export FLASK_APP=server.py </br>
+   export FLASK_ENV=development </br> 
    flask run
 
 3. open another terminal &
