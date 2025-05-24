@@ -4,6 +4,7 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 
+ratings_list=[]
 
 @app.route("/members")
 def members():
@@ -18,12 +19,9 @@ def members():
 @app.route("/ratings", methods=["POST"] )
 def ratings():
     new_rating=request.json
-    ratings=[]
-    ratings.append(new_rating)
-    print(ratings)
-    return jsonify({"message": "Member added successfully", "member": new_rating})
+    ratings_list.append(new_rating)
+    print(ratings_list)
+    return jsonify({"new rating": new_rating})
 
      
     
-if __name__ == "__main__":  
-    app.run(host='0.0.0.0', port=5000, debug=True)
