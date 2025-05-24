@@ -1,9 +1,9 @@
 
 ### Start the application ###
 
-- 1. Optional preparation:
-• decativate any other base
-• then cd to your venv
+ Optional preparation:
+• decativate any other base </br>
+• then cd to your venv </br>
 
 0. source ../venv/bin/activate
 1. cd to flask-server folder
