@@ -1,6 +1,9 @@
+
 ### Start the application ###
 
--1. decativate any other base, then
+- 1. Optional preparation:
+• decativate any other base
+• then cd to your venv
 
 0. source ../venv/bin/activate
 1. cd to flask-server folder
@@ -9,11 +12,11 @@
    export FLASK_ENV=development  
    flask run
 
-3. Open another terminal &
+3. open another terminal &
 
 3. cd to client
-4. Npm start
+4. npm start
 
-### Optional  ###
+### Optional: check if running ###
 5. Check if frontend is visible at port
-6. See if server is running by console.logs or in another tab 
+6. See if server is running by console.logs or in another tab. 
