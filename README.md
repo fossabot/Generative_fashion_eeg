@@ -1,7 +1,7 @@
 
 ### Start the application ###
 
- Optional preparation:
+ Optional preparation: </br>
 • decativate any other base </br>
 • then cd to your venv </br>
 
