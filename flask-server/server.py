@@ -204,7 +204,7 @@ def get_all_ratings():
     
     user_ids.sort()
     
-    # Zusammenfassung aller Benutzer-Dateien
+    # Zusammenfassung der Benutzer-Dateien
     summary = {
         "userIds": user_ids,
         "userCount": len(user_ids),
