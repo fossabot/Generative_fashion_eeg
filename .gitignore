@@ -1,0 +1,45 @@
+./flask-server/new_venv/
+new_venv/
+**/new_venv/
+./flas/server/__pycache_
+package-lock.json
+package.json
+# dependencies
+client/node_modules/
+
+# production build
+client/dist/
+client/build/
+
+# testing
+client/coverage/
+
+# environment variables
+client/.env
+client/.env.*.local
+!client/.env.example
+
+# logs
+client/npm-debug.log*
+client/yarn-debug.log*
+client/yarn-error.log*
+client/pnpm-debug.log*
+
+# editor configs
+client/.vscode/
+client/.idea/
+client/*.sublime-project
+client/*.sublime-workspace
+
+# OS-specific
+client/.DS_Store
+client/Thumbs.db
+
+# optional cache files
+client/.cache/
+client/.next/
+client/out/
+client/*.tsbuildinfo
+
+# local development
+client/*.local
