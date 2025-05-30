@@ -1,17 +1,13 @@
 {
   "it0": {
-    "index": [
-      0
+    "index": [],
+    "rating": [],
+    "images": [
+      "img_white_6.9921.png",
+      "img_white_5.077.png",
+      "img_yellow_5.0387.png",
+      "img_yellow_6.2421.png"
     ],
-    "vector": [
-      [
-        0.0,
-        0.0,
-        0.0
-      ]
-    ],
-    "rating": [
-      10
-    ]
+    "vectors_file": "user1_it0_vectors.npy"
   }
 }

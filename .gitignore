@@ -43,3 +43,7 @@ client/*.tsbuildinfo
 
 # local development
 client/*.local
+
+stylegan3
+
+/model

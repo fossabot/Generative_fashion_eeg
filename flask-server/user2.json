@@ -1,53 +1,13 @@
 {
   "it0": {
-    "index": [
-      0,
-      1,
-      2,
-      3
+    "index": [],
+    "rating": [],
+    "images": [
+      "img_blue_6.2535.png",
+      "img_green_5.4357.png",
+      "img_green_5.4105.png",
+      "img_white_6.6596.png"
     ],
-    "vector": [
-      [
-        0.0,
-        0.0,
-        0.0
-      ],
-      [
-        0.0,
-        0.0,
-        0.0
-      ],
-      [
-        0.0,
-        0.0,
-        0.0
-      ],
-      [
-        0.0,
-        0.0,
-        0.0
-      ]
-    ],
-    "rating": [
-      40,
-      80,
-      90,
-      0
-    ]
-  },
-  "it1": {
-    "index": [
-      0
-    ],
-    "vector": [
-      [
-        0.0,
-        0.0,
-        0.0
-      ]
-    ],
-    "rating": [
-      0
-    ]
+    "vectors_file": "user2_it0_vectors.npy"
   }
 }
