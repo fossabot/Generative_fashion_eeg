@@ -93,7 +93,7 @@ if __name__ == "__main__":
 
 ######### SPÄTER, WENNS MIT GPU GEHT ###################
 
-# ---- Helper ----#
+# ---- Helper ---- #
 
 # def seed2vec(G, seed):
 #   return np.random.RandomState(seed).randn(1, G.z_dim)

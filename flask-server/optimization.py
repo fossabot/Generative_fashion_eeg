@@ -3,13 +3,14 @@ import torch
 import numpy as np
 import matplotlib.pyplot as plt
 
+###### SIMULATION von CHAT GPT für test und verständnis zwecke ####
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 print(f"Verwendetes Gerät: {device}")
 
 # Bewertungen der Nutzer auf die Bilder von 1-100
 values=[93,3,17,82]
-# 2. multi objective
+# multi objective
 def multi_objective_bewertungsfunktion(values):
    values.sort()
    return (values[len(values)-2], values[len(values)-1])
@@ -76,9 +77,6 @@ for iteration in range(num_iterationen):
     pareto_vektoren = latent_space[pareto_indices]
     pareto_bewertungen = bewertungen[pareto_indices].cpu().numpy()
 
-    #print(f"Anzahl der Pareto-Vektoren: {len(pareto_indices)}")
-    #print("Pareto-Bewertungen:\n", pareto_bewertungen[:5])
-
     if len(pareto_indices) == 0:
         print("Keine Pareto-Vektoren")
         break
@@ -86,7 +84,7 @@ for iteration in range(num_iterationen):
     # b) "Bayes-ähnliche" Gewichtung
     wahrscheinlichkeiten = np.ones(len(pareto_indices)) / len(pareto_indices)
 
-    # c)Suche der Eltern-Vektoren
+    # c) Suche der Eltern-Vektoren
     eltern_indices = np.random.choice(len(pareto_indices), size=num_vectors, replace=True, p=wahrscheinlichkeiten)
     eltern_vektoren = pareto_vektoren[eltern_indices]
 
@@ -118,11 +116,6 @@ finale_bewertungen_np = bewertungen.cpu().numpy()
 finale_pareto_indices = finde_pareto_front(finale_bewertungen_np)
 beste_finale_pareto_bewertungen = finale_bewertungen_np[finale_pareto_indices]
 beste_finale_pareto_vektoren = latent_space[finale_pareto_indices].cpu().numpy()
-
-#print("\n--- Finale Pareto-Front ---")
-#print(f"Anzahl der Vektoren in der finalen Pareto-Front: {len(finale_pareto_indices)}")
-#print("Bewertungen der finalen Pareto-Front:\n", beste_finale_pareto_bewertungen)
-#print("Beispielhafte latente Vektoren der finalen Pareto-Front:\n", beste_finale_pareto_vektoren[:5])
 
 # Finale Visualisierung (nur für 2 Ziele)
 if num_ziele == 2:
